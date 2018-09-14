@@ -101,7 +101,7 @@ def write_predictions_and_score(validation_score, model, columns_used):
     key = "decision_tree"
     if not os.path.exists('data/{}'.format(key)):
         os.makedirs('data/{}'.format(key))
-    filename = 'data/{}/model.pkl'.format(key)
+    filename = 'data/{}/model13.pkl'.format(key)
     print("Writing to {}".format(filename))
     joblib.dump(model, filename)
 
@@ -117,7 +117,7 @@ def write_predictions_and_score(validation_score, model, columns_used):
     print("Done deciding with trees")
 
 
-def main(model=Model.DECISION_TREE):
+def main(model=Model.RANDOM_FOREST):
     original_train, original_validate = load_data()
     train, validate = encode(original_train, original_validate)
     model = make_model(train, model)
